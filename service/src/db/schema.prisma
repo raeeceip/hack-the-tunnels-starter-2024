@@ -1,0 +1,64 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Course {
+  id             Int              @id @default(autoincrement())
+  subjectCode    String
+  courseCode     String           
+  title          String
+  shortTitle     String
+  description    String
+  createdAt      DateTime         @default(now())
+  updatedAt      DateTime         @updatedAt
+  ScheduledEvent ScheduledEvent[]
+}
+
+model ScheduledEvent {
+  id                                 Int                           @id @default(autoincrement())
+  crn                                String                        @unique
+  section                            String
+  instructor                         String
+  credit                             String
+  type                               String
+  term                               String
+  days                               String
+  startTime                          String
+  endTime                            String
+  additionalRegistrationRequirements String
+  url                                String
+  description                        String
+  courseId                           Int
+  course                             Course                        @relation(fields: [courseId], references: [id])
+  createdAt                          DateTime                      @default(now())
+  updatedAt                          DateTime                      @updatedAt
+  ScheduledEventRegistrations        ScheduledEventRegistrations[]
+}
+
+model ScheduledEventRegistrations {
+  id               Int            @id @default(autoincrement())
+  scheduledEvent   ScheduledEvent @relation(fields: [scheduledEventId], references: [id])
+  scheduledEventId Int
+  account          Account        @relation(fields: [accountId], references: [id])
+  accountId        Int
+  createdAt        DateTime       @default(now())
+  updatedAt        DateTime       @updatedAt
+}
+
+model Account {
+  id                          Int                           @id @default(autoincrement())
+  email                       String                        @unique
+  password                    String
+  role                        String
+  createdAt                   DateTime                      @default(now())
+  updatedAt                   DateTime                      @updatedAt
+  ScheduledEventRegistrations ScheduledEventRegistrations[]
+}
