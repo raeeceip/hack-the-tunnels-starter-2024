@@ -4,7 +4,7 @@
     align-items: center;
     margin-top: 1rem;
     margin-bottom: 0.5rem;
-    padding-left: 4rem;
+    padding-left: 0.5rem;
 
     &__item {
       font-weight: bold;
@@ -17,7 +17,6 @@
     flex-direction: column;
     gap: 1rem;
     padding: 0.5rem;
-    padding-left: 4rem;
     padding-bottom: 1.5rem;
 
     &__topbar {
@@ -33,6 +32,13 @@
     &--light-gray {
       background: #c0c0c0;
     }
+
+    &__content {
+      padding-left: 4rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
   }
 
   &__results {
@@ -42,6 +48,10 @@
 
   &__crn {
     width: 5rem;
+  }
+
+  &__add {
+    width: 4rem;
   }
 
   &__subject {

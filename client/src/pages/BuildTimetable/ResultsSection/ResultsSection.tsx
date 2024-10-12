@@ -10,6 +10,7 @@ function ResultsSection({ scheduledEvents, addEvent }: ResultsSectionProps) {
   return (
     <div className="ResultsSection">
       <div className="ResultsSection__topbar">
+        <div className="ResultsSection__topbar__item ResultsSection__add"></div>
         <div className="ResultsSection__topbar__item ResultsSection__crn">
           CRN
         </div>
@@ -43,6 +44,9 @@ function ResultsSection({ scheduledEvents, addEvent }: ResultsSectionProps) {
             }`}
           >
             <div className="ResultsSection__result__topbar">
+              <div className="ResultsSection__add">
+                <button onClick={() => addEvent(event)}>Add</button>
+              </div>
               <div className="ResultsSection__crn">
                 <a href={event.url} target="_blank" rel="noopener noreferrer">
                   {event.crn}
@@ -65,14 +69,15 @@ function ResultsSection({ scheduledEvents, addEvent }: ResultsSectionProps) {
                 {event.instructor}
               </div>
             </div>
-            <div>
-              <b>Days:</b> {event.days}, <b>Time:</b> {event.startTime} -{" "}
-              {event.endTime}
+            <div className="ResultsSection__result__content">
+              <div>
+                <b>Days:</b> {event.days}, <b>Time:</b> {event.startTime} -{" "}
+                {event.endTime}
+              </div>
+              <div>
+                <b>Section Information:</b> {event.description}
+              </div>
             </div>
-            <div>
-              <b>Section Information:</b> {event.description}
-            </div>
-            <button onClick={() => addEvent(event)}>Add</button>
           </div>
         ))}
       </div>
