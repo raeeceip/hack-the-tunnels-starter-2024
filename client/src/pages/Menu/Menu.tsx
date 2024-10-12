@@ -67,7 +67,7 @@ function Menu() {
             <Link to="/timetables/build">
               Build Your Timetable/Registration
             </Link>
-            ,<Link to="/timetables">Student Timetable</Link>,
+            ,<Link to="/timetables">Student Timetables</Link>,
             <Link to="/404">Display Holds</Link>,
             <Link to="/404">Registration Override Requests</Link>
           </span>,
