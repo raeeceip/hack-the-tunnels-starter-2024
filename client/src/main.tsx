@@ -2,7 +2,14 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { CookiesProvider, useCookies } from "react-cookie";
-import { BuildTimetable, Menu, Login, NotFound, ViewTimetable } from "@/pages";
+import {
+  BuildTimetable,
+  Menu,
+  Login,
+  NotFound,
+  Timetables,
+  ViewTimetable,
+} from "@/pages";
 import { AccountProvider } from "./context";
 import "./index.scss";
 
@@ -16,11 +23,15 @@ const router = createBrowserRouter([
     element: <Login />,
   },
   {
-    path: "/timetable/build",
+    path: "/timetables",
+    element: <Timetables />,
+  },
+  {
+    path: "/timetables/build",
     element: <BuildTimetable />,
   },
   {
-    path: "/timetable/view",
+    path: "/timetables/:id",
     element: <ViewTimetable />,
   },
   {

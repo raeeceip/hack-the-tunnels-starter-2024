@@ -5,18 +5,32 @@ import { ResultsSection } from "./ResultsSection";
 import { TimetableSection } from "./TimetableSection";
 import { useState } from "react";
 import { ServiceAPI } from "@/infrastructure";
-import { CalendarBlock, Days } from "@/components";
 import { ScheduledEvent } from "@/infrastructure/ServiceAPI";
-import "./BuildTimetable.style.scss";
 import { WorksheetSection } from "./WorksheetSection";
+import { useAccountContext } from "@/context";
+import { useNavigate } from "react-router-dom";
+import { scheduledEventToCalendarBlock } from "@/utils";
+import "./BuildTimetable.style.scss";
 
 function BuildTimetable() {
+  const { jwt } = useAccountContext();
   const [scheduledEvents, setScheduledEvents] = useState<ScheduledEvent[]>([]);
   const [selectedEvents, setSelectedEvents] = useState<ScheduledEvent[]>([]);
+  const navigate = useNavigate();
 
   const fetchScheduledEvents = async () => {
     const result = await ServiceAPI.fetchScheduledEvents();
     setScheduledEvents(result);
+  };
+
+  const createTimetable = async () => {
+    const result = await ServiceAPI.createTimetable(
+      new Date().toISOString(),
+      selectedEvents.map((event) => event.id.toString()),
+      jwt,
+    );
+
+    navigate(`/timetables/${result.data.id}`);
   };
 
   const addEvent = (event: ScheduledEvent) => {
@@ -25,43 +39,6 @@ function BuildTimetable() {
 
   const removeEvent = (event: ScheduledEvent) => {
     setSelectedEvents(selectedEvents.filter((e) => e.id !== event.id));
-  };
-
-  const scheduledEventToCalendarBlock = (
-    event: ScheduledEvent,
-  ): CalendarBlock => {
-    const adjustTime = (time: string): string => {
-      const [hours, minutes] = time.split(":").map(Number);
-      const adjustedMinutes = minutes < 30 ? "00" : "30";
-      return `${hours.toString().padStart(2, "0")}:${adjustedMinutes}`;
-    };
-
-    let newStartTimeString = event.startTime;
-    let newEndTimeString = event.endTime;
-
-    if (!event.startTime.includes("NA") && !event.endTime.includes("NA")) {
-      newStartTimeString = adjustTime(event.startTime);
-      newEndTimeString = adjustTime(event.endTime);
-    }
-
-    const dayMap = {
-      Mon: Days.Monday,
-      Tue: Days.Tuesday,
-      Wed: Days.Wednesday,
-      Thu: Days.Thursday,
-      Fri: Days.Friday,
-      Sat: Days.Saturday,
-      Sun: Days.Sunday,
-    };
-
-    const calendarBlock = {
-      label: `${event.course.subjectCode} ${event.course.courseCode} ${event.section}`,
-      days: event.days.split(",").map((day) => dayMap[day.trim()]),
-      startTime: newStartTimeString,
-      endTime: newEndTimeString,
-    };
-
-    return calendarBlock;
   };
 
   return (
@@ -83,6 +60,7 @@ function BuildTimetable() {
             <WorksheetSection
               selectedEvents={selectedEvents}
               removeEvent={removeEvent}
+              createTimetable={createTimetable}
             />
           </Section>
         )}

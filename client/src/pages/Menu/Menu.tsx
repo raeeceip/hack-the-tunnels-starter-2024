@@ -64,8 +64,10 @@ function Menu() {
           <span>
             <b>Registration: </b>
             <Link to="/404">Getting Started</Link>,{" "}
-            <Link to="/timetable/build">Build Your Timetable/Registration</Link>
-            ,<Link to="/timetable/view">Student Timetable</Link>,
+            <Link to="/timetables/build">
+              Build Your Timetable/Registration
+            </Link>
+            ,<Link to="/timetables">Student Timetable</Link>,
             <Link to="/404">Display Holds</Link>,
             <Link to="/404">Registration Override Requests</Link>
           </span>,

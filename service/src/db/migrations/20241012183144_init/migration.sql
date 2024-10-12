@@ -32,14 +32,24 @@ CREATE TABLE "ScheduledEvent" (
 );
 
 -- CreateTable
-CREATE TABLE "ScheduledEventRegistrations" (
+CREATE TABLE "TimetableEvent" (
     "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
     "scheduledEventId" INTEGER NOT NULL,
+    "timetableId" INTEGER NOT NULL,
+    "createdAt" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updatedAt" DATETIME NOT NULL,
+    CONSTRAINT "TimetableEvent_scheduledEventId_fkey" FOREIGN KEY ("scheduledEventId") REFERENCES "ScheduledEvent" ("id") ON DELETE RESTRICT ON UPDATE CASCADE,
+    CONSTRAINT "TimetableEvent_timetableId_fkey" FOREIGN KEY ("timetableId") REFERENCES "Timetable" ("id") ON DELETE RESTRICT ON UPDATE CASCADE
+);
+
+-- CreateTable
+CREATE TABLE "Timetable" (
+    "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+    "name" TEXT NOT NULL,
     "accountId" INTEGER NOT NULL,
     "createdAt" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updatedAt" DATETIME NOT NULL,
-    CONSTRAINT "ScheduledEventRegistrations_scheduledEventId_fkey" FOREIGN KEY ("scheduledEventId") REFERENCES "ScheduledEvent" ("id") ON DELETE RESTRICT ON UPDATE CASCADE,
-    CONSTRAINT "ScheduledEventRegistrations_accountId_fkey" FOREIGN KEY ("accountId") REFERENCES "Account" ("id") ON DELETE RESTRICT ON UPDATE CASCADE
+    CONSTRAINT "Timetable_accountId_fkey" FOREIGN KEY ("accountId") REFERENCES "Account" ("id") ON DELETE RESTRICT ON UPDATE CASCADE
 );
 
 -- CreateTable

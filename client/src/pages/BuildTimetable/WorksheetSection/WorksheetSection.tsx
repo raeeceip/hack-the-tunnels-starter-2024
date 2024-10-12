@@ -3,11 +3,13 @@ import "./WorksheetSection.style.scss";
 interface WorksheetSectionProps {
   selectedEvents: ScheduledEvent[];
   removeEvent: (event: ScheduledEvent) => void;
+  createTimetable: () => void;
 }
 
 function WorksheetSection({
   selectedEvents,
   removeEvent,
+  createTimetable,
 }: WorksheetSectionProps) {
   return (
     <div className="WorksheetSection">
@@ -61,6 +63,7 @@ function WorksheetSection({
           ))}
         </tbody>
       </table>
+      <button onClick={createTimetable}>Create Timetable</button>
     </div>
   );
 }
