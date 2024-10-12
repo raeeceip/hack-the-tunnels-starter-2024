@@ -1,5 +1,4 @@
 import { Ok, Err, Result } from "ts-results";
-import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 import { AccountService } from "../services";
 
@@ -13,9 +12,7 @@ export const login = async (
     return Err(new Error("Account not found"));
   }
 
-  const match = await bcrypt.compare(password, account.password);
-
-  if (!match) {
+  if (password !== account.password) {
     return Err(new Error("Incorrect password"));
   }
 
