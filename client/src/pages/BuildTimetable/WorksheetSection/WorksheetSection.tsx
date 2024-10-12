@@ -37,12 +37,21 @@ function WorksheetSection({
                 </button>
               </td>
               <td>unavailable</td>
-              <td>{event.crn}</td>
+              <td>
+                <a href={event.url} target="_blank" rel="noopener noreferrer">
+                  {event.crn}
+                </a>
+              </td>
               <td>
                 {event.course.subjectCode} {event.course.courseCode}{" "}
                 {event.section}
               </td>
-              <td>{event.course.shortTitle}</td>
+
+              <td>
+                <a href={event.url} target="_blank" rel="noopener noreferrer">
+                  {event.course.shortTitle}
+                </a>
+              </td>
               <td>
                 {event.days} {event.startTime} - {event.endTime}
               </td>
