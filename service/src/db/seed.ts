@@ -50,10 +50,11 @@ const seedCentralData = async () => {
   );
 
   for (const event of filteredEventsData) {
+    const [subjectCode, courseCode] = event.code.split(" ");
     const course = await prisma.course.findFirst({
       where: {
-        subjectCode: event.subjectCode,
-        courseCode: event.courseCode,
+        subjectCode: subjectCode,
+        courseCode: courseCode,
       },
     });
 

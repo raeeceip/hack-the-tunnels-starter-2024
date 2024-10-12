@@ -19,7 +19,7 @@ model Course {
   description    String
   createdAt      DateTime         @default(now())
   updatedAt      DateTime         @updatedAt
-  ScheduledEvent ScheduledEvent[]
+  ScheduledEvents ScheduledEvent[]
 }
 
 model ScheduledEvent {

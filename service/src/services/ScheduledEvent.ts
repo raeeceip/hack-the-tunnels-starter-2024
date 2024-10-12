@@ -7,16 +7,13 @@ export const getFirst = async (
 ): Promise<Result<ScheduledEvent[], Error>> => {
   const events = await prisma.scheduledEvent.findMany({
     take: count,
-    include: {
-      course: true,
-    },
-  });
-
-  const res = await prisma.scheduledEvent.findMany({
     where: {
+      term: {
+        contains: "Winter 2025 (January-April)",
+      },
       course: {
-        title: {
-          startsWith: "Math",
+        subjectCode: {
+          contains: "COMP",
         },
       },
     },
@@ -24,16 +21,6 @@ export const getFirst = async (
       course: true,
     },
   });
-
-  const courses = await prisma.course.findMany({
-    where: {
-      title: {
-        startsWith: "Math",
-      },
-    },
-  });
-
-  console.log("events", res);
 
   return Ok(events);
 };
