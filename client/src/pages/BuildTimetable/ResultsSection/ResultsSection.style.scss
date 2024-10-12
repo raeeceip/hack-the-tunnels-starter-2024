@@ -1,0 +1,70 @@
+.ResultsSection {
+  &__topbar {
+    display: flex;
+    align-items: center;
+    margin-top: 1rem;
+    margin-bottom: 0.5rem;
+    padding-left: 4rem;
+
+    &__item {
+      font-weight: bold;
+      width: fit-content;
+    }
+  }
+
+  &__result {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 0.5rem;
+    padding-left: 4rem;
+    padding-bottom: 1.5rem;
+
+    &__topbar {
+      display: flex;
+      align-items: center;
+      margin-bottom: 0.5rem;
+    }
+
+    &--gray {
+      background: #dcdcdc;
+    }
+
+    &--light-gray {
+      background: #c0c0c0;
+    }
+  }
+
+  &__results {
+    max-height: 25rem;
+    overflow-y: auto;
+  }
+
+  &__crn {
+    width: 5rem;
+  }
+
+  &__subject {
+    width: 7rem;
+  }
+
+  &__section {
+    width: 6rem;
+  }
+
+  &__title {
+    width: 12rem;
+  }
+
+  &__credit {
+    width: 5rem;
+  }
+
+  &__type {
+    width: 8rem;
+  }
+
+  &__instructor {
+    width: 9rem;
+  }
+}
