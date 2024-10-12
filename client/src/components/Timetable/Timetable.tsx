@@ -22,7 +22,6 @@ interface TimetableProps {
 }
 
 function Timetable({ events }: TimetableProps) {
-  console.log(events);
   const eventsToDisplay = events.filter(
     (event) =>
       event.startTime !== "" &&
@@ -30,7 +29,6 @@ function Timetable({ events }: TimetableProps) {
       event.startTime !== "NA" &&
       event.endTime !== "NA",
   );
-  console.log(eventsToDisplay);
 
   return (
     <div className="Timetable">
@@ -44,8 +42,8 @@ function Timetable({ events }: TimetableProps) {
           </tr>
         </thead>
         <tbody>
-          {Array.from({ length: 20 }, (_, i) => {
-            const hour = 9 + Math.floor(i / 2);
+          {Array.from({ length: 22 }, (_, i) => {
+            const hour = 8 + Math.floor(i / 2);
             const minute = i % 2 === 0 ? "00" : "30";
             const timeLabel = `${hour}:${minute}`;
             return (
