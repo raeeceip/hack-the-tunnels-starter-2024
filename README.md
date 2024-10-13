@@ -1,6 +1,6 @@
-# Hack The Tunnels - Starter
+# Hack The Tunnels - Starter 2024
 
-![Hack The Tunnels](https://i.imgur.com/hfdpJca.png)
+![Hack The Tunnels](https://i.imgur.com/1NCyXkn.png)
 
 This is the project template for [Hack The Tunnels](https://ccss.carleton.ca/hackthetunnels/).
 
