@@ -1,3 +1,5 @@
+@import "../../globals.scss";
+
 .Timetable {
   font-size: 0.8rem;
   margin-top: 1.25rem;
@@ -39,8 +41,8 @@
   }
 
   &__cell--multiple-events {
-    background-color: #cc003331;
-    color: #cc0033;
+    background-color: rgba($theme--dark, 0.31);
+    color: $theme--dark;
     font-weight: bold;
   }
 }
