@@ -34,6 +34,8 @@ npm run dev
 
 ### Service Setup
 
+Follow the following instructions in a 2nd terminal while your client is running.
+
 1. Move into the service directory
 
 ```
