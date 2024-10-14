@@ -70,13 +70,59 @@ Students will be tasked with recreating and improving many of the core component
 
 ### Login Page - `/`
 
+The following page is a mostly perfect recereation of the Carleton Central login page, however it should be noted that the inputs for email and password have been hardcoded to send `email: "admin@email.com", "password"` which is the default login information for one of the default accounts.
+
+![image](https://github.com/user-attachments/assets/92644637-bc6e-436d-97ee-2df133262dca)
+
 ### Menu Page - `/`
+
+The following page is known within the codebase as the "Menu Page". The only links that actually work on this page are clicking "logout", "Build Your Timetable/Registration", and "Student Timetables".
+
+![image](https://github.com/user-attachments/assets/da5d65d2-ded5-4bcf-9349-30effe2a1d31)
 
 ### Build Timetable Page - `/timetables/build`
 
+The following page is an amalgamation of the 4 different pages it takes in Carleton Central to build a timetable.
+
+Upon clicking "search", a list of results will appear that can be added to your timesheet via their respective "add" buttons.
+
+Selected events can be removed by clicking their associated "remove" button.
+
+Upon clicking "create timetable", you will be redirected to that timetables "View Timetable Page".
+
+![image](https://github.com/user-attachments/assets/86aff09c-4ff4-4240-b51b-14caf1774bbc)
+
 ### Timetables Page - `/timetables`
 
+This is a page that does not exist in the real Carleton Central.
+
+It acts as a way of all saved timetables associated with the account.
+
+This screen may appear empty to you if you have not created a timetable on `/timetables/build`.
+
+If you have created a timetable, you will likely see a strinified date string as it's title, this is because the code the sends the create timetable request does not hard code a name so that it's easier to differentiate timetables:
+
+```typescript
+const createTimetable = async () => {
+  const result = await ServiceAPI.createTimetable(
+    new Date().toISOString(),
+    selectedEvents.map((event) => event.id.toString()),
+      jwt,
+    );
+
+    navigate(`/timetables/${result.data.id}`);
+};
+```
+
+![image](https://github.com/user-attachments/assets/a881efdc-ef92-423e-afb6-24c589b02396)
+
+
 ### View Timetable Page - `/timetables/:id`
+
+The following page simple allows you to view a previously created timetable.
+
+![image](https://github.com/user-attachments/assets/cafa24e3-ef51-47ae-8b6b-c40ba8987d0f)
+
 
 ## API Routes
 
