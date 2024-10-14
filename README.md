@@ -26,11 +26,7 @@ cd client
 npm install
 ```
 
-3. Copy `.env.sample`
-
-Create a copy of the `.env.sample` file and rename the file's name to `.env`.
-
-4. Run the client
+3. Run the client
 
 ```
 npm run dev
@@ -50,23 +46,19 @@ cd service
 npm install
 ```
 
-3. Copy `.env.sample`
-
-Create a copy of the `.env.sample` file and rename the file's name to `.env`.
-
-4. Run Migrations
+3. Run Migrations
 
 ```
 npx prisma migrate dev
 ```
 
-5. Add the Seed Data
+4. Add the Seed Data
 
 ```
 npx prisma db seed
 ```
 
-6. Run the service
+5. Run the service
 
 ```
 npm run dev
