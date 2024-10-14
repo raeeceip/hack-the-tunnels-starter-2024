@@ -66,6 +66,24 @@ The project template for this year is a recreation of the **infamously hard to u
 
 Students will be tasked with recreating and improving many of the core components of the application.
 
+
+## Important Files and Folders
+
+### Client
+
+- `main.tsx`: Initialises app and describes routing for pages
+- `client/src/pages`: Where code for individual pages in the web app live
+- `client/src/components`: Where code for "components" (ui pieces reusable across pages) live
+- `client/src/layouts`: Where code for "layouts", which are kind of like "page themes" live
+- `client/src/infrastructure/ServiceAPI`: Where code the evokes the Service via RESTful API live
+
+### Service
+
+- `service/src/api/router.ts`: Where Express.js RESTful API routes are defined
+- `service/src/api/routes`: Where all other routers are defined
+- `service/src/services`: "Services" are code that handle "business logic" like creating a timetable, handling user login, etc.
+- `service/src/db/schema.prisma`: Where our database's schema is defiend. A database schema is the "shape" our data is stored in.
+
 ## Views
 
 ### Login Page - `/`
