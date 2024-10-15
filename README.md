@@ -6,9 +6,80 @@ This is the project template for [Hack The Tunnels](https://ccss.carleton.ca/hac
 
 The project template utilizes [React](https://react.dev/), [TypeScript](https://www.typescriptlang.org/), [Express](https://expressjs.com/), and [Prisma](https://www.prisma.io/).
 
-## Project Setup
+## Windows Setup
+In Powershell or Command Prompt, run the following commands
 
-Before you can set up the project, you will need to install [Node.js](https://nodejs.org/en).
+1. Install WSL
+
+```
+wsl --install
+```
+
+2. Set WSL to use version 2 as the default.
+
+```
+wsl --set-default-version 2
+```
+
+3. Install the Ubuntu distribution within WSL.
+
+```
+wsl --install -d ubuntu
+```
+**Note: You will need to create a Linux user**
+
+4. Install Homebrew
+
+```
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+```
+
+5. Follow the on-screen instructions to add Homebrew to your PATH.
+
+```
+(This will be instructions displayed after the Homebrew installation)
+```
+
+6. Refresh your terminal session to apply the changes made to .bashrc
+
+```
+source ~/.bashrc
+```
+
+7. Install Node.js
+
+```
+brew install node
+```
+
+8. Install Git
+
+```
+brew install git
+```
+
+## Mac Setup
+In the Terminal, run the following commands
+
+1. Install Homebrew
+
+```
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+```
+
+2. Install Node.js
+
+```
+brew install node
+```
+
+3. Install Git
+
+```
+brew install git
+```
+
+## Project Setup
 
 To get the project working, you will need to have both the client and server running.
 
