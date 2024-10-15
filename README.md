@@ -81,7 +81,25 @@ brew install git
 
 ## Project Setup
 
-To get the project working, you will need to have both the client and server running.
+### Create a Github Repository for the Project
+
+Click on Use this template > Create a new repository
+
+![image](https://github.com/user-attachments/assets/ccefc342-83b2-4258-aa73-bc061358008a)
+
+In Powershell/Command Prompt (for Windows) or the Terminal (for Mac), run the following commands
+
+1. Clone the repository
+
+```
+git clone https://github.com/your-github-username/your-repository-name.git
+```
+
+2. Move into the project directory
+
+```
+cd your-repository-name
+```
 
 ### Client Setup
 
@@ -130,6 +148,8 @@ npx prisma migrate dev
 ```
 npm run dev
 ```
+
+To get the project working, you will need to have both the client and server running.
 
 # Documentation
 
