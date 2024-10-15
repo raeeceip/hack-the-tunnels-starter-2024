@@ -6,6 +6,49 @@ This is the project template for [Hack The Tunnels](https://ccss.carleton.ca/hac
 
 The project template utilizes [React](https://react.dev/), [TypeScript](https://www.typescriptlang.org/), [Express](https://expressjs.com/), and [Prisma](https://www.prisma.io/).
 
+## Table of Contents
+
+- [Event Setup Instructions](#event-setup-instructions)
+    - [Windows Setup](#windows-setup)
+    - [Mac Setup](#mac-setup)
+    - [Project Setup](#project-setup)
+        - [Create a Github Repository for the Project](#create-a-github-repository-for-the-project)
+        - [Client Setup](#client-setup)
+        - [Service Setup](#service-setup)
+- [Documentation](#documentation)
+    - [Important Files and Folders](#important-files-and-folders)
+        - [Client](#client)
+        - [Service](#service)
+    - [Views](#views)
+        - [Login Page - `/`](#login-page---)
+        - [Menu Page - `/`](#menu-page---)
+        - [Build Timetable Page - `/timetables/build`](#build-timetable-page---timetablesbuild)
+        - [Timetables Page - `/timetables`](#timetables-page---timetables)
+        - [View Timetable Page - `/timetables/:id`](#view-timetable-page---timetablesid)
+    - [API Routes](#api-routes)
+        - [Login - `POST /login`](#login---post-login)
+        - [All Scheduled Events - `GET /scheduledEvents`](#all-scheduled-events---get-scheduledevents)
+        - [Account's Timetables - `GET /timetables`](#accounts-timetables---get-timetables)
+        - [Create Timetable - `POST timetables`](#create-timetable---post-timetables)
+        - [View Timetable - `GET /timetables/:id`](#view-timetable---get-timetablesid)
+    - [Database Schema](#database-schema)
+        - [Account](#account)
+        - [Course](#course)
+        - [Scheduled Event](#scheduled-event)
+        - [Timetable](#timetable)
+        - [Timetable Event](#timetable-event)
+
+# Event Setup Instructions
+
+To avoid many of the environment setup-related issues that occur with Windows, we will be having all [Hack The Tunnels 2024](https://ccss.carleton.ca/hackthetunnels/) participants set up [Windows Subsystem for Linux (WSL)](https://learn.microsoft.com/en-us/windows/wsl/about).
+
+If you are a Windows user, you should follow the [Windows Setup](#windows-setup) and then follow the [Project Setup](#project-setup) in your new WSL environment.
+
+If you are a Mac or Linux user, instead follow the [Mac Setup](#mac-setup) and then follow the [Project Setup](#project-setup) instructions.
+
+Both guides will have you set up [Homebrew](https://brew.sh/) to manage dependencies. Homebrew will help you install additional software like Node.js, Git, Gh, etc.
+
+
 ## Windows Setup
 In Powershell or Command Prompt, run the following commands
 
@@ -83,11 +126,11 @@ brew install git
 
 ### Create a Github Repository for the Project
 
-Click on Use this template > Create a new repository
+Click on "Use this template" > Create a new repository
 
 ![image](https://github.com/user-attachments/assets/ccefc342-83b2-4258-aa73-bc061358008a)
 
-In Powershell/Command Prompt (for Windows) or the Terminal (for Mac), run the following commands
+In your WSL terminal (for Windows) or the terminal (for Mac), run the following commands
 
 1. Clone the repository
 
