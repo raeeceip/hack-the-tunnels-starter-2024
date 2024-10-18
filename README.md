@@ -186,7 +186,13 @@ npm install
 npx prisma migrate dev
 ```
 
-4. Run the service
+4. Add the Seed Data
+
+```
+npx prisma db seed
+```
+
+5. Run the service
 
 ```
 npm run dev
