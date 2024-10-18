@@ -9,6 +9,7 @@ import {
   NotFound,
   Timetables,
   ViewTimetable,
+  Workshop,
 } from "@/pages";
 import { AccountProvider } from "./context";
 import "./index.scss";
@@ -33,6 +34,10 @@ const router = createBrowserRouter([
   {
     path: "/timetables/:id",
     element: <ViewTimetable />,
+  },
+  {
+    path: "/workshop",
+    element: <Workshop />,
   },
   {
     path: "*",

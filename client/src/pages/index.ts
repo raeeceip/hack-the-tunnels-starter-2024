@@ -4,3 +4,4 @@ export { Login } from "./Login";
 export { NotFound } from "./NotFound";
 export { Timetables } from "./Timetables";
 export { ViewTimetable } from "./ViewTimetable";
+export { Workshop } from "./Workshop";
