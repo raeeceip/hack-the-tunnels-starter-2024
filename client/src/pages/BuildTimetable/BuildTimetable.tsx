@@ -27,6 +27,7 @@ function BuildTimetable() {
     const result = await ServiceAPI.createTimetable(
       new Date().toISOString(),
       selectedEvents.map((event) => event.id.toString()),
+      
       jwt,
     );
 
@@ -71,6 +72,11 @@ function BuildTimetable() {
             )}
           />
         </Section>
+        < form action = 'BuildTimetable.tsx'>
+          <label htmlFor= "timetable_name"> Timetable Name:</label>
+          <input type="text" id="timetable_name" name="timetable_name"></input>
+          <input type="submit" value="Submit"></input>
+        </form>
       </div>
     </Layout>
   );
