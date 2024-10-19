@@ -3,13 +3,27 @@ import { useAccountContext } from "../../context";
 import { Base as Layout } from "@/layouts";
 import "./Login.style.scss";
 
+
 function Login() {
   const [message, setMessage] = useState(null);
+  const [email, setEmail] = useState("")
+  const [password, setPassword] = useState("")
   const { login } = useAccountContext();
+
 
   const attemptLogin = async () => {
     try {
-      const message = await login("admin@email.com", "password");
+      const new_email = (document.getElementById("email") as HTMLInputElement);
+      const email = new_email.value;
+      
+      const new_password = (document.getElementById("password") as HTMLInputElement);
+      const password = new_password.value;
+
+      setEmail(email)
+      setPassword(password)
+
+      const message = await login(email, password);
+      
       setMessage(message);
     } catch (error) {
       console.log(error);
@@ -34,8 +48,8 @@ function Login() {
           </div>
           {message && <p>{message}</p>}
           <div className="Login__panel__content__input">
-            <input type="text" placeholder="MyCarletonOne username"></input>
-            <input type="password" placeholder="Password"></input>
+            <input id = "email" type="text" placeholder="MyCarletonOne username"></input>
+            <input id = "password" type="password" placeholder="Password"></input>
           </div>
           <div className="Login__panel__content__checkbox">
             <input type="checkbox"></input>
