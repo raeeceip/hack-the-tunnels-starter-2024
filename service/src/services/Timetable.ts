@@ -2,12 +2,15 @@ import { Timetable, ScheduledEvent } from "@prisma/client";
 import { prisma } from "../db";
 import { Result, Ok, Err } from "ts-results";
 import { AccountService } from ".";
+import { sendDiscordMessage } from "./discordService";
 
+// Function to create a timetable
 export const createTimetable = async (
   email: string,
   name: string,
   scheduledEventIds: string[],
 ): Promise<Result<Timetable, Error>> => {
+  // Find the account by email
   const account = await AccountService.findByEmail(email);
 
   if (account === null) {
@@ -32,6 +35,7 @@ export const createTimetable = async (
     }
   }
 
+  // Create the timetable
   const timetable = await prisma.timetable.create({
     data: {
       name,
@@ -52,9 +56,15 @@ export const createTimetable = async (
     },
   });
 
+  // Send a Discord message to the general chat with timetable details
+  const timetableDetails = scheduledEvents.map(event => `Course: ${event.courseId}, Start: ${event.startTime}, End: ${event.endTime}`).join('\n');
+  await sendDiscordMessage(`@everyone A new timetable has been created for ${email}:\n\n${timetableDetails}`);
+
+  // Return the created timetable and a message indicating that an email has been sent
   return Ok(timetable);
 };
 
+// Function to check if two events overlap
 const isOverlapping = (event1: ScheduledEvent, event2: ScheduledEvent): boolean => {
   const start1 = new Date(event1.startTime).getTime();
   const end1 = new Date(event1.endTime).getTime();
@@ -64,12 +74,13 @@ const isOverlapping = (event1: ScheduledEvent, event2: ScheduledEvent): boolean 
   return (start1 < end2 && start2 < end1);
 };
 
+// Function to get a timetable by ID
 export const getTimetableById = async (
   id: number,
 ): Promise<Result<Timetable, Error>> => {
   const timetable = await prisma.timetable.findUnique({
     where: {
-      id,
+      id: id, // Ensure id is correctly passed
     },
     include: {
       timetableEvents: {
@@ -91,6 +102,7 @@ export const getTimetableById = async (
   return Ok(timetable);
 };
 
+// Function to get all timetables for an account
 export const getAccountTimetables = async (
   email: string,
 ): Promise<Result<Timetable[], Error>> => {
