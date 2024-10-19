@@ -1,0 +1,22 @@
+// NotFound.style.scss
+
+.layout {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-color: #f8f9fa;
+    text-align: center;
+  }
+  
+  h1 {
+    font-size: 6rem;
+    color: #343a40;
+    margin: 0;
+  }
+  
+  p {
+    font-size: 1.5rem;
+    color: #6c757d;
+  }

@@ -1,0 +1,20 @@
+version: '3.8'
+
+services:
+  client:
+    build:
+      context: ./client
+      dockerfile: Dockerfile
+    ports:
+      - "5173:5173"
+    depends_on:
+      - service
+    environment:
+      - VITE_SERVICE_URL=http://service:5000
+
+  service:
+    build:
+      context: ./service
+      dockerfile: Dockerfile
+    ports:
+      - "5000:5000"

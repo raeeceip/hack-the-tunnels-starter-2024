@@ -1,4 +1,4 @@
-import { Timetable } from "@prisma/client";
+import { Timetable, ScheduledEvent } from "@prisma/client";
 import { prisma } from "../db";
 import { Result, Ok, Err } from "ts-results";
 import { AccountService } from ".";
@@ -12,6 +12,24 @@ export const createTimetable = async (
 
   if (account === null) {
     return Err(new Error("Account not found"));
+  }
+
+  // Fetch all scheduled events to check for overlaps
+  const scheduledEvents = await prisma.scheduledEvent.findMany({
+    where: {
+      id: {
+        in: scheduledEventIds.map((id) => parseInt(id)),
+      },
+    },
+  });
+
+  // Check for overlapping events
+  for (let i = 0; i < scheduledEvents.length; i++) {
+    for (let j = i + 1; j < scheduledEvents.length; j++) {
+      if (isOverlapping(scheduledEvents[i], scheduledEvents[j])) {
+        return Err(new Error(`Event ${scheduledEvents[i].id} overlaps with event ${scheduledEvents[j].id}`));
+      }
+    }
   }
 
   const timetable = await prisma.timetable.create({
@@ -35,6 +53,15 @@ export const createTimetable = async (
   });
 
   return Ok(timetable);
+};
+
+const isOverlapping = (event1: ScheduledEvent, event2: ScheduledEvent): boolean => {
+  const start1 = new Date(event1.startTime).getTime();
+  const end1 = new Date(event1.endTime).getTime();
+  const start2 = new Date(event2.startTime).getTime();
+  const end2 = new Date(event2.endTime).getTime();
+
+  return (start1 < end2 && start2 < end1);
 };
 
 export const getTimetableById = async (
