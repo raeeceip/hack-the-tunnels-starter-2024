@@ -1,7 +1,7 @@
 # client/Dockerfile
 
 # Use an official Node.js runtime as a parent image
-FROM node:14
+FROM node:16
 
 # Set the working directory
 WORKDIR /app
@@ -15,8 +15,8 @@ RUN npm install
 # Copy the rest of the application code
 COPY . .
 
-# Expose the port the app runs on
-EXPOSE 3000
+# Expose the port the Vite dev server runs on
+EXPOSE 5173
 
-# Start the application
-CMD ["npm", "start"]
+# Start the Vite development server
+CMD ["npm", "run", "dev"]
