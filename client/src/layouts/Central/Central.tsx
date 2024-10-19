@@ -14,6 +14,7 @@ function Central({ title, children }: Props) {
   return (
     <Base>
       <Banner />
+        
       <div className="Central__page">
         <HeaderLinks />
         <Navigation />
@@ -22,6 +23,7 @@ function Central({ title, children }: Props) {
         <div className="Central__page__content">{children}</div>
         <Divider />
         <div className="Central__page__footer">
+          <img src="/carletonfooterbanner.jpg" alt="carleton university sky view"></img>
           <div className="Central__page__footer__release">Release: 8.10.1</div>
           <div className="Central__page__footer__copyright">
             © 2024 Ellucian Company L.P. and its affiliates.
