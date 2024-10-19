@@ -1,48 +1,62 @@
-@import "../../globals.scss";
-
 .Timetable {
-  font-size: 0.8rem;
-  margin-top: 1.25rem;
-  margin-bottom: 1.25rem;
-
-  table {
-    width: 100%;
-    border-collapse: collapse;
-    border-spacing: 0;
-    border-color: black;
-
-    tr {
-      border: solid 2px #e0e0e0;
-    }
-
-    td {
-      border: solid 2px #e0e0e0;
-      padding: 10px;
-      text-align: center;
-      height: 10px;
-    }
-
-    th {
-      width: 5rem !important;
-      max-width: 5rem !important;
-    }
-  }
+  width: 100%;
+  border-collapse: collapse;
+  font-family: Arial, sans-serif;
+  margin: 20px 0;
 
   &__head {
-    background-color: #cccccc;
+    background-color: #f4f4f4;
+    color: #333;
+    font-weight: bold;
+    text-align: center;
+
+    th {
+      padding: 10px;
+      border: 1px solid #ddd;
+    }
   }
 
-  &__cell--event {
-    background-color: #cccccc;
+  th, td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: center;
   }
 
   &__cell--time {
-    border-bottom: solid 2px #ffffff !important;
+    background-color: #f9f9f9;
+    font-weight: bold;
   }
 
-  &__cell--multiple-events {
-    background-color: rgba($theme--dark, 0.31);
-    color: $theme--dark;
-    font-weight: bold;
+  &__cell--event {
+    background-color: #e0f7fa;
+    color: #00796b;
+    position: relative;
+
+    &--multiple-events {
+      background-color: #ffecb3;
+      color: #f57c00;
+    }
+
+    .Timetable__event {
+      margin: 5px 0;
+      padding: 5px;
+      background-color: #ffffff;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+      .event-label {
+        font-size: 0.9em;
+        font-weight: bold;
+      }
+    }
+  }
+
+  tr:nth-child(even) {
+    background-color: #f9f9f9;
+  }
+
+  tr:hover {
+    background-color: #f1f1f1;
   }
 }
