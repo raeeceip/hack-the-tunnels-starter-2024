@@ -16,7 +16,7 @@ mkdir -p "$component_name"
 
 # Create index.ts file
 cat > "$component_name/index.ts" << EOL
-export { default } from './${component_name}';
+export { default  as ${component_name} } from './${component_name}';
 EOL
 
 # Create ComponentName.tsx file

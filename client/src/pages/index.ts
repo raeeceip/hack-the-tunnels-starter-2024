@@ -5,4 +5,8 @@ export { NotFound } from "./NotFound";
 export { Timetables } from "./Timetables";
 export { ViewTimetable } from "./ViewTimetable";
 export { Workshop } from "./Workshop";
-export { MyProgress } from "./MyProgress";
+export { StudentServices } from "./StudentServices";
+export { EmployeeServices } from "./EmployeeServices";
+export { FinancialServices } from "./FinancialServices";
+export { PersonalInformation } from "./PersonalInformation";
+export { default as MyProgress } from "./MyProgress/MyProgress"
