@@ -10,6 +10,7 @@ import {
   Timetables,
   ViewTimetable,
   Workshop,
+  MyProgress
 } from "@/pages";
 import { AccountProvider } from "./context";
 import "./index.scss";
@@ -38,6 +39,10 @@ const router = createBrowserRouter([
   {
     path: "/workshop",
     element: <Workshop />,
+  },
+  {
+    path: "/myprogress",
+    element : <MyProgress />,
   },
   {
     path: "*",

@@ -47,7 +47,7 @@ function Menu() {
           <Link to="/404">
             <b>myGrades</b> Display grades
           </Link>,
-          <Link to="/404">
+          <Link to="/myprogress">
             <b>myProgress (ACE: Academic Continuation Evaluation)</b>
           </Link>,
           <Link to="/404">
@@ -94,7 +94,7 @@ function Menu() {
           <span>
             <b>myAudit:</b> View academic audit.
           </span>,
-          <Link to="/404">
+          <Link to="/myprogress">
             <b>myProgress:</b> ACE (Academic Continuation Evaluation).
           </Link>,
         ]}
