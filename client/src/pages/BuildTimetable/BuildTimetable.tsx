@@ -8,7 +8,7 @@ import { ServiceAPI } from "@/infrastructure";
 import { ScheduledEvent } from "@/infrastructure/ServiceAPI";
 import { WorksheetSection } from "./WorksheetSection";
 import { useAccountContext } from "@/context";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { scheduledEventToCalendarBlock } from "@/utils";
 import "./BuildTimetable.style.scss";
 
@@ -16,6 +16,9 @@ function BuildTimetable() {
   const { jwt } = useAccountContext();
   const [scheduledEvents, setScheduledEvents] = useState<ScheduledEvent[]>([]);
   const [selectedEvents, setSelectedEvents] = useState<ScheduledEvent[]>([]);
+  const [timetableName, setTimetableNames] = useState<string>("");
+  
+ 
   const navigate = useNavigate();
 
   const fetchScheduledEvents = async () => {
@@ -25,13 +28,15 @@ function BuildTimetable() {
 
   const createTimetable = async () => {
     const result = await ServiceAPI.createTimetable(
-      new Date().toISOString(),
+      timetableName,
       selectedEvents.map((event) => event.id.toString()),
       jwt,
     );
 
     navigate(`/timetables/${result.data.id}`);
   };
+
+ 
 
   const addEvent = (event: ScheduledEvent) => {
     setSelectedEvents([...selectedEvents, event]);
@@ -43,6 +48,7 @@ function BuildTimetable() {
 
   return (
     <Layout title={"My Course Worksheet"}>
+      
       <div className="BuildTimetable">
         <Section title="Search">
           <SearchSection onSearch={fetchScheduledEvents} />
@@ -55,6 +61,7 @@ function BuildTimetable() {
             />
           </Section>
         )}
+        
         {selectedEvents.length > 0 && (
           <Section title="Worksheet">
             <WorksheetSection
@@ -71,6 +78,10 @@ function BuildTimetable() {
             )}
           />
         </Section>
+        < form action = ''>
+          <label htmlFor= "timetable_name"> Timetable Name:</label>
+          <input onChange={(e) => setTimetableNames(e.target.value)} type="text" id="timetable_name" name="timetable_name"></input>
+        </form>
       </div>
     </Layout>
   );

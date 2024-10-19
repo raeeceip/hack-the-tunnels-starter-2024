@@ -5,7 +5,7 @@
   background-repeat: no-repeat;
   background-size: cover;
   -webkit-background-size: cover;
-  background-image: url("/carleton_background.jpg");
+  background-image: url("https://www.ouinfo.ca/assets/files/images/carousel5.jpg");
   font-size: 0.9em;
 
   &__panel {
@@ -77,4 +77,23 @@
       }
     }
   }
+}
+
+
+button {
+  cursor: pointer;
+  border: 0;
+  border-radius: 4px;
+  font-weight: 600;
+  margin: 0 10px;
+  width: 200px;
+  padding: 10px 0;
+  box-shadow: 0 0 20px blue($color: #0c4c71);
+  transition: 0.4s;
+}
+
+.Login__panel__button:hover {
+  background-color: red;
+  color: black;
+  box-shadow: 0 0 20px blue($color: #710c0c);
 }
