@@ -1,6 +1,6 @@
 import express, { Request, Response } from "express";
 import { success } from "../utils";
-import { ScheduledEventService } from "../../services";
+import { ScheduledEventService } from "../../services/ScheduledEvent";
 
 const router = express.Router();
 

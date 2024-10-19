@@ -37,6 +37,23 @@ export const fetchScheduledEvents = async (): Promise<ScheduledEvent[]> => {
   return data;
 };
 
+export const fetchRecommendations = async (day: string, startTime: string, endTime: string): Promise<ScheduledEvent[]> => {
+  const response = await fetch(
+    `${import.meta.env.VITE_API_ROOT}/api/v1/recommendations?day=${day}&startTime=${startTime}&endTime=${endTime}`,
+  );
+  const json = await response.json();
+
+  if (json.error) {
+    throw new Error(json.error);
+  }
+
+  if (!json.data) {
+    return []; // Return an empty array if no data is found
+  }
+
+  const data = formatScheduledEvents(json.data);
+  return data;
+};
 const formatScheduledEvents = (events: any[]): ScheduledEvent[] => {
   return events.map((event) => {
     return {

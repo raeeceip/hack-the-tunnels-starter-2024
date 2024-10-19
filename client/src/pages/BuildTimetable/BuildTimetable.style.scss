@@ -5,3 +5,20 @@
   gap: 1rem;
   flex-direction: column;
 }
+.recommendations {
+  margin-top: 20px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+
+  p {
+    margin: 5px 0;
+    padding: 5px;
+    border-bottom: 1px solid #eee;
+  }
+
+  p:last-child {
+    border-bottom: none;
+  }
+}
