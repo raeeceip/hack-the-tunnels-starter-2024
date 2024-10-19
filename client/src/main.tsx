@@ -25,6 +25,22 @@ const router = createBrowserRouter([
     element: <Login />,
   },
   {
+    path: "/personal-information",
+    element: <Menu />,
+  },
+  {
+    path: "/student-services",
+    element: <Menu />,
+  },
+  {
+    path: "/employee-services",
+    element: <Menu />,
+  },
+  {
+    path: "/financial-services",
+    element: <Menu />,
+  },
+  {
     path: "/timetables",
     element: <Timetables />,
   },
